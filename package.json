@@ -9,9 +9,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build step specified' && exit 0", 
+    "run": "npm start" 
   },
   "author": "Harshit",
   "license": "ISC",
   "description": ""
 }
+
