@@ -70,7 +70,7 @@ const { Server } = require("socket.io");
 
 const io = new Server(http, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://ping-pong-seven-nu.vercel.app",
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"]
