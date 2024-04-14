@@ -4,9 +4,6 @@
 /node_modules
 /backend/node_modules
 
-# dependencies
-/backend/node_modules
-
 /.pnp
 .pnp.js
 
