@@ -3,7 +3,7 @@ import { io } from 'socket.io-client'
 export default class GameEngine{
     constructor(userName){
         this.userName = userName;
-        this.socket = io("http://localhost:8080");
+        this.socket = io("https://ping-pong-1o0a.onrender.com");
 
         if(this.userName){
             this.connectionHandler();
