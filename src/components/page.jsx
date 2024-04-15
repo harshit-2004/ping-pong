@@ -16,8 +16,8 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
 
     // State variables for ball position, speed, and scores
     const [cor, setCor] = useState([ballRadius + paddleOffset + blockerWidth, 300]);
-    const [dx, setDx] = useState(5);
-    const [dy, setDy] = useState(5);
+    const [dx, setDx] = useState(10);
+    const [dy, setDy] = useState(10);
     const [score1, setScore1] = useState(0);
     const [score2, setScore2] = useState(0);
 
@@ -84,7 +84,7 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
         }
 
         // Call draw function in intervals
-        const interval = setInterval(draw, 10);
+        const interval = setInterval(draw, 30);
 
         // Clean up interval
         return () => clearInterval(interval);
