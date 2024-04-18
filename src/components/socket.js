@@ -1,9 +1,10 @@
 import { io } from 'socket.io-client'
+import Production from '../config.js';
 
 export default class GameEngine{
     constructor(userName){
         this.userName = userName;
-        this.socket = io("https://ping-pong-1o0a.onrender.com");
+        this.socket = io(Production.server_prod);
 
         if(this.userName){
             this.connectionHandler();

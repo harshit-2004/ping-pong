@@ -16,8 +16,8 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
 
     // State variables for ball position, speed, and scores
     const [cor, setCor] = useState([ballRadius + paddleOffset + blockerWidth, 300]);
-    const [dx, setDx] = useState(10);
-    const [dy, setDy] = useState(10);
+    const [dx, setDx] = useState(5);
+    const [dy, setDy] = useState(5);
     const [score1, setScore1] = useState(0);
     const [score2, setScore2] = useState(0);
 
@@ -66,25 +66,21 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
 
             // Check collision with side walls and update scores
             if (cor[0] + dx > canvasWidth - ballRadius) {
-                // setScore2(score2 + 1);
                 setBlocker1Y(300);
                 setBlocker2Y(300);
                 setDx(-dx);
-                // setScore2(score2+1);
                 settingScore(score2+1);
                 settingBall(770, 300);
             } else if (cor[0] + dx < ballRadius) {
                 setBlocker1Y(300);
                 setBlocker2Y(300);
-                // setScore1(score1+1);
-                // settingScore(score1+1,score2);
                 settingBall(30, 300);
                 setDx(-dx);
             }
         }
 
         // Call draw function in intervals
-        const interval = setInterval(draw, 30);
+        const interval = setInterval(draw, 20);
 
         // Clean up interval
         return () => clearInterval(interval);
@@ -93,7 +89,7 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
         if(x==10){
           setWinner(user2);
         }
-        console.log("emmiting scores");
+        // console.log("emmiting scores");
         gameEngine.io.emit("score",{gameName,x});
         setScore2(x);
       }
@@ -101,7 +97,7 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
       function settingBall(x, y) {
         gameEngine.io.emit("ball", { gameName, x, y});
       }
-    }, [cor, dx, dy, blocker1Y, blocker2Y, score1, score2]);
+    }, [cor, dx, dy]);
 
     useEffect(() => {
       function handleBallEvent(data) {
@@ -112,7 +108,7 @@ function PingPongGame({ blocker1Y, blocker2Y, setBlocker1Y, setBlocker2Y ,gameEn
       function handleScoreEvent(data) {
         const x = data;
         setScore1(x);
-        console.log("scores ",x);
+        // console.log("scores ",x);
         if(x==10){
             setWinner(user1);
           }
